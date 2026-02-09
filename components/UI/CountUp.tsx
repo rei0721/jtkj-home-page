@@ -1,0 +1,63 @@
+import React, { useEffect, useState, useRef } from 'react';
+
+interface CountUpProps {
+  end: number;
+  duration?: number;
+  suffix?: string;
+  prefix?: string;
+  className?: string;
+}
+
+const CountUp: React.FC<CountUpProps> = ({ end, duration = 2000, suffix = '', prefix = '', className = '' }) => {
+  const [count, setCount] = useState(0);
+  const countRef = useRef<HTMLDivElement>(null);
+  const hasAnimated = useRef(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        if (entry.isIntersecting && !hasAnimated.current) {
+          hasAnimated.current = true;
+          let startTime: number | null = null;
+          
+          const animate = (timestamp: number) => {
+            if (!startTime) startTime = timestamp;
+            const progress = timestamp - startTime;
+            const percentage = Math.min(progress / duration, 1);
+            
+            // Easing function: easeOutQuart
+            const ease = 1 - Math.pow(1 - percentage, 4);
+            
+            setCount(Math.floor(ease * end));
+
+            if (percentage < 1) {
+              requestAnimationFrame(animate);
+            }
+          };
+          requestAnimationFrame(animate);
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    if (countRef.current) {
+      observer.observe(countRef.current);
+    }
+
+    return () => {
+      if (countRef.current) {
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        observer.unobserve(countRef.current);
+      }
+    };
+  }, [end, duration]);
+
+  return (
+    <div ref={countRef} className={className}>
+      {prefix}{count}{suffix}
+    </div>
+  );
+};
+
+export default CountUp;
