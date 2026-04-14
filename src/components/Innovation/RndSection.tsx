@@ -5,6 +5,7 @@ import ScrollAnimation from '@/components/UI/ScrollAnimation';
 export default function RndSection() {
   const [activeTab, setActiveTab] = useState(0);
 
+// TODO(components-Innovation-RndSection): 缺失
   return (
     <section id="rnd" className="relative py-24 md:py-32 overflow-hidden transition-all bg-white">
       <div className="absolute inset-0 z-0 opacity-30 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#cbd5e1 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
@@ -15,9 +16,8 @@ export default function RndSection() {
             <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-8">核心技术研发</h2>
             <div className="w-20 h-1 bg-gradient-to-r from-transparent via-accent to-transparent mx-auto rounded-full mb-8"></div>
             <p className="text-lg md:text-xl text-slate-600 leading-relaxed mb-12">
-              我们拥有一支由行业专家领衔的顶尖研发团队，每年将营业收入的 8% 投入研发。
-              通过构建全流程数字化研发平台，我们在光电材料配方、微纳加工工艺及智能制造装备等领域
-              取得了多项突破性成果。
+            拥有一批高级工程师和技术专家，在超薄车载盖板光学材料制备、高精度玻璃加工工艺、先进镀膜技术等方面开展持续研发。
+            为公司的产品升级和技术突破提供了核心驱动力
             </p>
           </div>
         </ScrollAnimation>
