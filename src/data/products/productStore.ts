@@ -33,7 +33,7 @@ export const DATA_STORE: Record<string, CategoryData> = {
         image: 'https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?q=80&w=1000&auto=format&fit=crop',
       },
     ],
-    products: Array.from({ length: 14 }).map((_, i) => ({
+    products: Array.from({ length: 1 }).map((_, i) => ({
       id: i + 1,
       name: `G${i + 1} Series 智能触控模组`,
       image: `https://picsum.photos/seed/touch${i}/600/600`,
@@ -72,7 +72,7 @@ export const DATA_STORE: Record<string, CategoryData> = {
         image: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1000&auto=format&fit=crop',
       },
     ],
-    products: Array.from({ length: 8 }).map((_, i) => ({
+    products: Array.from({ length: 1 }).map((_, i) => ({
       id: i + 100,
       name: `NB-${i + 1} 高清显示总成`,
       image: `https://picsum.photos/seed/laptop${i}/600/600`,
@@ -110,7 +110,7 @@ export const DATA_STORE: Record<string, CategoryData> = {
         image: 'https://images.unsplash.com/photo-1622379375836-96b63c780962?q=80&w=1000&auto=format&fit=crop',
       },
     ],
-    products: Array.from({ length: 5 }).map((_, i) => ({
+    products: Array.from({ length: 1 }).map((_, i) => ({
       id: i + 200,
       name: `Auto-X${i + 1} 车规级大屏`,
       image: `https://picsum.photos/seed/auto${i}/600/600`,
