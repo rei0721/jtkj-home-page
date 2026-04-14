@@ -1,6 +1,32 @@
 export const historyEvents = [
-  { year: '2021', title: '公司成立', desc: '四川江天科技有限公司成立于2021年4月', image: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1000' },
-  // { year: '2015', title: '深交所上市', desc: '完成股份制改革，并在深圳证券交易所创业板成功上市，股票代码00XXXX。', image: 'https://images.unsplash.com/photo-1611974765270-ca1258634369?q=80&w=1000' },
-  // { year: '2018', title: '全球化布局', desc: '设立越南、印度生产基地，并成立美国、德国研发中心，开启全球化战略。', image: 'https://images.unsplash.com/photo-1526304640152-d4619684e884?q=80&w=1000' },
-  // { year: '2023', title: '技术突破', desc: '自主研发的柔性纳米银触控材料实现量产，打破国外技术垄断。', image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1000' },
+  {
+    year: '2021',
+    title: '公司成立',
+    desc: '四川江天科技有限公司正式成立，完成选址注册及建设规划。',
+    image: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1000',
+  },
+  {
+    year: '2022 ',
+    title: '项目落地创纪录 ',
+    desc: '公司完成了项目建设及设备购置，并与凯盛集团达成触控显示项目的战略合作。',
+    image: 'https://images.unsplash.com/photo-1611974765270-ca1258634369?q=80&w=1000',
+  },
+  {
+    year: '2023',
+    title: '项目攻关见成效',
+    desc: '盖板事业部试运行，超薄车载盖板光学材料生产项成功申报市级重大科技专项。',
+    image: 'https://images.unsplash.com/photo-1526304640152-d4619684e884?q=80&w=1000',
+  },
+  {
+    year: '2024',
+    title: '资质认证获荣誉',
+    desc: '资质认证获荣誉 公司资质体系逐步完善，获得了三体系及相关资质认证，获评国家高新技术企业、科技型企业、省级企业技术中心、专精特新企业等荣誉称号。',
+    image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1000',
+  },
+  {
+    year: '2025',
+    title: '深化合作创未来',
+    desc: '公司深化与凯盛科技股份的战略合作关系。全力开发华为、联想、亚马逊在平板电脑、学习机、车载等领域的高附加值产品。旨在进一步拓展市场份额，增强企业核心竞争力，为公司的持续发展注入新的动力。',
+    image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1000',
+  },
 ];
