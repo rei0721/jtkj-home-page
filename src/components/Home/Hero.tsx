@@ -23,16 +23,27 @@ export default function Hero() {
         </div>
       ))}
 
+
       <div className="relative z-20 container mx-auto px-4 sm:px-6 lg:px-8 pt-20 pointer-events-none">
         <div className="max-w-4xl animate-fade-in-up pointer-events-auto">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6 tracking-wide drop-shadow-lg">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-600">精密智造的无尘空间</span>
-            <br />
-            产业赋能
-          </h1>
-          <p className="text-xl md:text-2xl text-slate-200 mb-10 leading-relaxed max-w-2xl drop-shadow-md">
-          精密智造的制造车间，恒温恒湿且高度无尘，每一台设备都在精准运行，提供稳定可靠的精密制造环境。
-          </p>
+          {heroSlides.map((slide, index) => (
+            <div
+              key={slide.id}
+              className={`transition-all duration-1000 ease-in-out ${
+                index === currentSlide ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8 absolute inset-0'
+              
+              }`}
+            >
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6 tracking-wide drop-shadow-lg">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-600">{slide.title}</span>
+                <br />
+                {slide.subtitle}
+              </h1>
+              <p className="text-xl md:text-2xl text-slate-200 mb-10 leading-relaxed max-w-2xl drop-shadow-md">
+                {slide.description}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
 

@@ -3,7 +3,7 @@ import { CategoryData } from '@/types';
 export const DATA_STORE: Record<string, CategoryData> = {
   'smart-touch': {
     title: '触摸屏领域',
-    // subtitle: 'Smart Touch Solutions',
+    subtitle: 'Smart Touch Solutions',
     heroSlides: [
       'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2070&auto=format&fit=crop',
@@ -49,7 +49,7 @@ export const DATA_STORE: Record<string, CategoryData> = {
   },
   'computing': {
     title: '防眩盖板',
-    // subtitle: 'IT & Computing Display',
+    subtitle: 'IT & Computing Display',
     heroSlides: [
       'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?q=80&w=2070&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?q=80&w=2070&auto=format&fit=crop',
@@ -87,7 +87,7 @@ export const DATA_STORE: Record<string, CategoryData> = {
   },
   'automotive': {
     title: '车载盖板领域',
-    // subtitle: 'Automotive Cockpit',
+    subtitle: 'Automotive Cockpit',
     heroSlides: [
       'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=2070&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1511919884226-fd3cad34687c?q=80&w=2070&auto=format&fit=crop',

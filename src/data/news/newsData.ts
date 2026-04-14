@@ -1,7 +1,7 @@
 import { NewsItem } from '@/types';
 
 export function generateNewsData(): NewsItem[] {
-  const categories = ['Company', 'Industry', 'Tender'] as const;
+  // const categories = ['Company', 'Industry', 'Tender'] as const;
   const data: NewsItem[] = [];
 
   data.push({
