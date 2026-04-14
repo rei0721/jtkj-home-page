@@ -1,29 +1,43 @@
 #!/bin/bash
 set -euo pipefail
 
+# --- 配置区 ---
 IMAGE_NAME="jtkj-dynamic-app"
 CONTAINER_NAME="jtkj-frontend"
 PORT_MAPPING="8080:80"
+# 获取脚本执行时的所在目录
+WORK_DIR=$(pwd)
 
-echo "🚀 [Host] 执行容器重启序列..."
+echo "🚀 [Host] 准备环境并重启容器..."
 
-# 1. 检查并构建镜像 (如果 Dockerfile 有变动)
+# 1. 安全检查：确保当前目录下有 Dockerfile
+if [ ! -f "$WORK_DIR/Dockerfile" ]; then
+    echo "❌ 错误: 在 $WORK_DIR 未找到 Dockerfile，请确保脚本在项目配置目录运行。"
+    exit 1
+fi
+
+# 2. 构建或更新基础镜像
+echo "🛠️ 正在检查/构建基础镜像..."
 docker build -t "$IMAGE_NAME":latest .
 
-# 2. 容器重启逻辑
+# 3. 容器清理
 if [ "$(docker ps -aq -f name=^/${CONTAINER_NAME}$)" ]; then
-    echo "🔄 发现旧容器，正在移除并重新启动以触发代码同步..."
+    echo "🔄 移除旧容器: $CONTAINER_NAME"
     docker rm -f "$CONTAINER_NAME"
 fi
 
-# 3. 运行容器
-# 注意：这里需要挂载一个 volume 才能持久化 node_modules，否则每次重启安装会很慢
+# 4. 启动容器 (加入 pnpm 缓存挂载，极大提升安装速度)
+echo "🚢 启动容器并挂载持久化卷..."
 docker run -d \
     --name "$CONTAINER_NAME" \
     --restart always \
     -p "$PORT_MAPPING" \
     -v jtkj_node_modules:/app/source/node_modules \
+    -v jtkj_pnpm_store:/root/.local/share/pnpm/store \
     "$IMAGE_NAME":latest
 
-echo "✅ [Success] 容器已启动。代码拉取与构建正在容器内部异步执行。"
-echo "📝 你可以使用 'docker logs -f $CONTAINER_NAME' 查看构建进度。"
+echo "------------------------------------------------"
+echo "✅ [Success] 容器已在后台启动！"
+echo "📡 访问地址: http://服务器IP:${PORT_MAPPING%%:*}"
+echo "📜 查看实时构建日志: docker logs -f $CONTAINER_NAME"
+echo "------------------------------------------------"
