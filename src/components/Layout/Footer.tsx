@@ -15,11 +15,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12 lg:gap-8 mb-24">
           <div className="lg:col-span-2 pr-0 lg:pr-12">
             <div className="mb-10">
-              <img
-                src={COMPANY.logo}
-                alt={COMPANY.name}
-                className="h-14 w-auto object-contain bg-white px-4 py-2 rounded-lg opacity-95"
-              />
+              <img src={COMPANY.logo} alt={COMPANY.name} className="h-14 w-auto object-contain" />
             </div>
             <p className="text-white/60 mb-10 leading-relaxed max-w-sm text-base">
               专注于光电新材料的研发与制造，致力于为全球客户提供高质量的触控显示解决方案，驱动产业技术革新，共创智能未来。

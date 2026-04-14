@@ -1,11 +1,13 @@
 import { useState, useMemo, useEffect, useCallback } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, Link } from 'react-router-dom';
 import { Search, Clock, ArrowRight } from 'lucide-react';
 import { generateNewsData } from '@/data/news/newsData';
 import { generatePartyData } from '@/data/party/partyData';
 import { DATA_STORE } from '@/data/products/productStore';
 import { usePagination } from '@/hooks/usePagination';
 import Pagination from '@/components/UI/Pagination';
+import ProductModal from '@/components/Products/ProductModal';
+import { ProductDetail } from '@/types';
 
 /* ── unified search item types ── */
 
@@ -16,6 +18,7 @@ interface ArticleResult {
   category: string;
   summary: string;
   image: string;
+  type: 'news' | 'party';
 }
 
 interface ProductResult {
@@ -24,6 +27,7 @@ interface ProductResult {
   image: string;
   categoryLabel: string;
   features: string[];
+  specs: { label: string; value: string }[];
 }
 
 /* ── build searchable data once ── */
@@ -34,13 +38,10 @@ const allArticles: ArticleResult[] = (() => {
     title: n.title,
     date: n.date,
     category:
-      n.category === 'Tender'
-        ? '招标公告'
-        : n.category === 'Industry'
-          ? '行业动态'
-          : '公司新闻',
+      n.category === 'Tender' ? '招标公告' : n.category === 'Industry' ? '行业动态' : '公司新闻',
     summary: n.summary,
     image: n.image,
+    type: 'news' as const,
   }));
 
   const party = generatePartyData().map((p) => ({
@@ -50,6 +51,7 @@ const allArticles: ArticleResult[] = (() => {
     category: '党建动态',
     summary: p.summary,
     image: p.image,
+    type: 'party' as const,
   }));
 
   return [...news, ...party].sort(
@@ -67,6 +69,7 @@ const allProducts: ProductResult[] = (() => {
         image: p.image,
         categoryLabel: cat.title,
         features: p.features,
+        specs: p.specs,
       });
     });
   });
@@ -102,6 +105,7 @@ export default function SearchResults() {
   const queryFromUrl = searchParams.get('q') || '';
   const [inputValue, setInputValue] = useState(queryFromUrl);
   const [activeTab, setActiveTab] = useState<Tab>('articles');
+  const [selectedProduct, setSelectedProduct] = useState<ProductDetail | null>(null);
 
   // sync input when url changes (e.g. browser back)
   useEffect(() => {
@@ -178,10 +182,7 @@ export default function SearchResults() {
       {/* ── Search Input ── */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-2xl pb-10">
         <form onSubmit={handleSubmit} className="relative">
-          <Search
-            size={22}
-            className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400"
-          />
+          <Search size={22} className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400" />
           <input
             type="text"
             value={inputValue}
@@ -219,14 +220,15 @@ export default function SearchResults() {
 
       {/* ── Results ── */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl py-8">
-        <p className="text-sm text-slate-500 mb-8">
-          为您找到{totalCount}个结果
-        </p>
+        <p className="text-sm text-slate-500 mb-8">为您找到{totalCount}个结果</p>
 
         {activeTab === 'articles' ? (
           <ArticleList items={displayedItems as ArticleResult[]} />
         ) : (
-          <ProductList items={displayedItems as ProductResult[]} />
+          <ProductList
+            items={displayedItems as ProductResult[]}
+            onProductClick={setSelectedProduct}
+          />
         )}
 
         <div className="mt-12">
@@ -237,6 +239,10 @@ export default function SearchResults() {
           />
         </div>
       </div>
+
+      {selectedProduct && (
+        <ProductModal product={selectedProduct} onClose={() => setSelectedProduct(null)} />
+      )}
     </div>
   );
 }
@@ -248,12 +254,18 @@ function ArticleList({ items }: { items: ArticleResult[] }) {
     return <EmptyState text="暂无相关文章" />;
   }
 
+  const getDetailLink = (item: ArticleResult) => {
+    const baseId = item.id.replace(/^(news|party)-/, '');
+    return item.type === 'news' ? `/news/article/${baseId}` : `/party/${baseId}`;
+  };
+
   return (
     <div className="space-y-0 divide-y divide-slate-100">
       {items.map((item) => (
-        <div
+        <Link
           key={item.id}
-          className="flex gap-6 py-8 group cursor-pointer"
+          to={getDetailLink(item)}
+          className="flex gap-6 py-8 group cursor-pointer block"
         >
           {/* image with date overlay */}
           <div className="relative flex-shrink-0 w-52 h-36 rounded-lg overflow-hidden bg-slate-100">
@@ -277,9 +289,7 @@ function ArticleList({ items }: { items: ArticleResult[] }) {
               <h3 className="text-lg font-bold text-slate-900 group-hover:text-accent transition-colors line-clamp-1 mb-2">
                 {item.title}
               </h3>
-              <p className="text-sm text-slate-500 leading-relaxed line-clamp-2">
-                {item.summary}
-              </p>
+              <p className="text-sm text-slate-500 leading-relaxed line-clamp-2">{item.summary}</p>
             </div>
             <div className="flex items-center justify-between mt-3">
               <div className="flex items-center text-xs text-slate-400 gap-1">
@@ -291,7 +301,7 @@ function ArticleList({ items }: { items: ArticleResult[] }) {
               </span>
             </div>
           </div>
-        </div>
+        </Link>
       ))}
     </div>
   );
@@ -299,7 +309,13 @@ function ArticleList({ items }: { items: ArticleResult[] }) {
 
 /* ── Product list ── */
 
-function ProductList({ items }: { items: ProductResult[] }) {
+function ProductList({
+  items,
+  onProductClick,
+}: {
+  items: ProductResult[];
+  onProductClick: (product: ProductDetail) => void;
+}) {
   if (items.length === 0) {
     return <EmptyState text="暂无相关产品" />;
   }
@@ -310,6 +326,12 @@ function ProductList({ items }: { items: ProductResult[] }) {
         <div
           key={item.id}
           className="group flex gap-4 p-4 rounded-xl border border-slate-100 hover:shadow-lg hover:border-accent/20 transition-all cursor-pointer"
+          onClick={() =>
+            onProductClick({
+              ...item,
+              id: parseInt(item.id.replace('product-', '')),
+            } as ProductDetail)
+          }
         >
           <div className="flex-shrink-0 w-28 h-28 rounded-lg overflow-hidden bg-slate-50">
             <img
@@ -323,9 +345,7 @@ function ProductList({ items }: { items: ProductResult[] }) {
             <h3 className="text-base font-bold text-slate-900 group-hover:text-accent transition-colors line-clamp-1 mb-1">
               {item.name}
             </h3>
-            <p className="text-sm text-slate-400 line-clamp-1">
-              {item.features.join(' / ')}
-            </p>
+            <p className="text-sm text-slate-400 line-clamp-1">{item.features.join(' / ')}</p>
           </div>
         </div>
       ))}

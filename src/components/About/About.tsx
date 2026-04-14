@@ -31,7 +31,7 @@ export default function About() {
       <PageHero
         title="关于我们"
         subtitle="About OptoTech"
-        backgroundImage="https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=2070&auto=format&fit=crop"
+        backgroundImage="/images/about/bg.png"
         overlayClassName="bg-slate-900/60"
       />
 

@@ -5,10 +5,10 @@ export default function CompanyIntro() {
         <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-8">致力成为全球领先的光电新材料服务商</h2>
         <div className="w-20 h-1 bg-accent mx-auto rounded-full mb-8"></div>
         <p className="text-lg md:text-xl text-slate-600 leading-relaxed text-justify md:text-center">
-          光电新材料股份有限公司成立于2010年，是一家专注于光电显示领域核心材料研发、生产与销售的高新技术企业。
-          公司坐落于深圳高新技术产业园，占地面积超800亩，拥有国际一流的千级无尘净化车间和全自动化生产线。
-          我们始终秉承"技术驱动，品质为先"的经营理念，为全球消费电子、智能汽车、工控医疗等领域的客户提供
-          具有竞争力的触控显示一体化解决方案。
+          四川江天科技有限公司成立于 2021 年 4 月
+          注册资本 5.5亿元，项目一期总投资10亿元，占地103亩，公司位于达州市东部经济开发区
+          公司主营2D和3D的车载、笔电、智能家具、商显等显示屏产品一体化解决方案，为终端客户提供设计、生产与销售一站式服务
+          达州工业史上落地时间最短、投资额度最大、科技含量最高、推进速度最快的重大产业项目
         </p>
       </div>
 

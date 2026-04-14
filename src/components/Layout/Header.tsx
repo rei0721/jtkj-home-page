@@ -42,7 +42,7 @@ export default function Header() {
         <div className="flex justify-between items-center h-full">
           <Link to="/" className="flex-shrink-0 flex items-center cursor-pointer">
             <img
-              src="http://www.scjtkj.com/template/jtkj/img/logo2.png"
+              src={useDarkText ? COMPANY.logoBlue : COMPANY.logo}
               alt="江天科技"
               className="h-10 md:h-12 w-auto object-contain"
             />

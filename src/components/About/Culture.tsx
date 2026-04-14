@@ -3,22 +3,22 @@ import { Target, Heart, Zap } from 'lucide-react';
 const cultureCards = [
   {
     icon: Target,
-    title: '企业使命',
-    desc: '以光电科技赋能智慧生活',
+    title: '理念',
+    desc: '产业报国，服务社会',
     color: 'from-blue-500 to-cyan-500',
     bgColor: 'bg-blue-50',
   },
   {
     icon: Heart,
-    title: '核心价值观',
-    desc: '客户至上 · 创新驱动 · 合作共赢 · 追求卓越',
+    title: '原则',
+    desc: '市场是企业的方向，质量是企业的生命',
     color: 'from-rose-500 to-pink-500',
     bgColor: 'bg-rose-50',
   },
   {
     icon: Zap,
-    title: '企业愿景',
-    desc: '成为全球光电新材料行业的创新引领者',
+    title: '精神',
+    desc: '艰苦奋斗，创业创新',
     color: 'from-amber-500 to-orange-500',
     bgColor: 'bg-amber-50',
   },

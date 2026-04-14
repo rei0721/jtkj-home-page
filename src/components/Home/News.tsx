@@ -1,11 +1,69 @@
+import { useState } from 'react';
 import { ArrowRight, Calendar, Tag } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { homeNews } from '@/data/home/homeNews';
+import { generateNewsData } from '@/data/news/newsData';
 import ScrollAnimation from '@/components/UI/ScrollAnimation';
 
+// 获取分类标题
+const getCategoryTitle = (category: string) => {
+  switch (category) {
+    case 'Company':
+      return '公司新闻';
+    case 'Industry':
+      return '行业动态';
+    case 'Tender':
+      return '招标公告';
+    default:
+      return '最新动态';
+  }
+};
+
+// 新闻大图卡片组件
+function FeaturedNewsCard({ news }: { news: ReturnType<typeof generateNewsData>[0] }) {
+  const [imageError, setImageError] = useState(false);
+
+  return (
+    <Link to={`/news/article/${news.id}`} className="group cursor-pointer block">
+      <div className="overflow-hidden rounded-xl mb-6 relative h-64 md:h-80 bg-gradient-to-br from-slate-100 to-slate-200">
+        {!imageError ? (
+          <img
+            src={news.image}
+            alt={news.title}
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            onError={() => setImageError(true)}
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center">
+            <span className="text-3xl font-bold text-slate-400">{getCategoryTitle(news.category)}</span>
+          </div>
+        )}
+        <div className="absolute top-4 left-4 bg-accent text-white px-3 py-1 rounded text-sm font-semibold shadow-lg">
+          {getCategoryTitle(news.category)}
+        </div>
+      </div>
+      <div>
+        <div className="flex items-center gap-4 text-slate-400 text-sm mb-3">
+          <div className="flex items-center gap-1">
+            <Calendar size={14} />
+            <span>{news.date}</span>
+          </div>
+        </div>
+        <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-3 group-hover:text-accent transition-colors">
+          {news.title}
+        </h3>
+        <p className="text-slate-600 leading-relaxed line-clamp-3">{news.summary}</p>
+      </div>
+    </Link>
+  );
+}
+
 export default function News() {
-  const featuredNews = homeNews[0];
-  const sideNews = homeNews.slice(1);
+  // 从新闻中心数据源获取并按日期降序排序，取前4条
+  const sortedNews = generateNewsData()
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .slice(0, 4);
+  const featuredNews = sortedNews[0];
+  const sideNews = sortedNews.slice(1);
 
   return (
     <section className="py-24 bg-white">
@@ -23,37 +81,16 @@ export default function News() {
         </ScrollAnimation>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-          <ScrollAnimation delay={200}>
-            <div className="group cursor-pointer">
-              <div className="overflow-hidden rounded-xl mb-6 relative h-64 md:h-80">
-                <img
-                  src={featuredNews.image}
-                  alt={featuredNews.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute top-4 left-4 bg-accent text-white px-3 py-1 rounded text-sm font-semibold shadow-lg">
-                  {featuredNews.category === 'Latest' ? '最新动态' : featuredNews.category}
-                </div>
-              </div>
-              <div>
-                <div className="flex items-center gap-4 text-slate-400 text-sm mb-3">
-                  <div className="flex items-center gap-1">
-                    <Calendar size={14} />
-                    <span>{featuredNews.date}</span>
-                  </div>
-                </div>
-                <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-3 group-hover:text-accent transition-colors">
-                  {featuredNews.title}
-                </h3>
-                <p className="text-slate-600 leading-relaxed line-clamp-3">{featuredNews.summary}</p>
-              </div>
-            </div>
-          </ScrollAnimation>
+          {featuredNews && (
+            <ScrollAnimation delay={200}>
+              <FeaturedNewsCard news={featuredNews} />
+            </ScrollAnimation>
+          )}
 
           <div className="flex flex-col gap-6 justify-between">
             {sideNews.map((news, index) => (
               <ScrollAnimation key={news.id} delay={300 + index * 100} className="w-full">
-                <div className="flex flex-col sm:flex-row gap-4 group cursor-pointer border-b border-slate-100 pb-6 last:border-0 last:pb-0">
+                <Link to={`/news/article/${news.id}`} className="flex flex-col sm:flex-row gap-4 group cursor-pointer border-b border-slate-100 pb-6 last:border-0 last:pb-0">
                   <div className="bg-slate-50 w-full sm:w-24 h-24 flex-shrink-0 flex flex-col items-center justify-center rounded-lg text-slate-500 group-hover:bg-accent group-hover:text-white transition-colors">
                     <span className="text-2xl font-bold">{news.date.split('-')[2]}</span>
                     <span className="text-xs uppercase">{news.date.split('-')[1]}月</span>
@@ -70,7 +107,7 @@ export default function News() {
                     </h4>
                     <p className="text-slate-500 text-sm line-clamp-2">{news.summary}</p>
                   </div>
-                </div>
+                </Link>
               </ScrollAnimation>
             ))}
           </div>
