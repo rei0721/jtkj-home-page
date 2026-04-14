@@ -142,7 +142,7 @@ export function generateNewsData(): NewsItem[] {
     date: '2024-05-18',
     category: 'Industry',
     summary: '随着智能座舱的普及，多屏化、大屏化成为趋势。本次论坛汇聚了全球顶尖专家，共同探讨光电新材料在未来的应用前景...',
-    image: 'https://images.unsplash.com/photo-1544531586-fde5298cdd40?q=80&w=800&auto=format&fit=crop',
+    image: '',
     content: `随着智能座舱的普及，多屏化、大屏化成为趋势。本次论坛汇聚了全球顶尖专家，共同探讨光电新材料在未来的应用前景。
 
 2024全球光电产业高峰论坛于5月18日在深圳国际会展中心隆重举办。本次论坛以"光电融合，智创未来"为主题，吸引了来自全球20多个国家和地区的500余位行业专家、企业代表参加。

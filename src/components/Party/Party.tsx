@@ -21,7 +21,7 @@ export default function Party() {
       <PageHero
         title="党建工作"
         subtitle="不忘初心 牢记使命"
-        backgroundImage="https://images.unsplash.com/photo-1555431189-064ad78456a6?q=80&w=2070&auto=format&fit=crop"
+        backgroundImage=""
         overlayClassName="bg-red-900/80 mix-blend-multiply"
         accentBarClassName="bg-yellow-500 shadow-[0_0_10px_rgba(234,179,8,0.5)]"
       />
