@@ -34,10 +34,10 @@ export const navItems: MenuItem[] = [
           'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=400&auto=format&fit=crop',
       },
       {
-        title: '平板-笔电-AIO',
+        title: '黄光AG制程防眩盖板',
         path: '/products/computing',
         image:
-          'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?q=80&w=400&auto=format&fit=crop',
+          '/images/home/bg_5.png',
       },
       {
         title: '车载领域',

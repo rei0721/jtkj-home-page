@@ -21,7 +21,7 @@ export default function Stats() {
               <ScrollAnimation>
                 <div className="mb-8 lg:mb-12">
                   <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 lg:mb-6">
-                    中国光电新材料产业
+                    {/* 中国光电新材料产业 */}
                   </h2>
                   <p className="text-base md:text-lg text-slate-300 leading-relaxed">
                     为国家自主创新、自立自强、实现高质量发展增添助力。

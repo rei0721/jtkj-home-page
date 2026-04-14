@@ -3,19 +3,19 @@ import ScrollAnimation from '@/components/UI/ScrollAnimation';
 const values = [
   {
     title: '自主创新',
-    description: '坚持核心技术自研，年研发投入超5亿，构建深厚技术护城河',
+    description: '坚持核心技术自研，年研发投入上亿，构建深厚技术护城河',
   },
   {
     title: '高端制造',
-    description: '引入工业4.0智能产线，全流程自动化控制，打造标杆级数字化工厂',
+    description: '引入工业智能产线，全流程自动化控制，打造标杆级数字化工厂',
   },
   {
     title: '可靠品质',
-    description: '通过IATF16949车规认证，建立全生命周期质量追溯体系，品质坚如磐石',
+    description: '通过权威认证，建立全生命周期质量追溯体系，品质坚如磐石',
   },
   {
     title: '完善服务',
-    description: '构建全球化服务网络，24/7快速响应机制，做您最值得信赖的合作伙伴',
+    description: '构建全球化服务网络，快速响应机制，做您最值得信赖的合作伙伴',
   },
 ];
 

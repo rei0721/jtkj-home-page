@@ -26,12 +26,12 @@ export default function Hero() {
       <div className="relative z-20 container mx-auto px-4 sm:px-6 lg:px-8 pt-20 pointer-events-none">
         <div className="max-w-4xl animate-fade-in-up pointer-events-auto">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6 tracking-wide drop-shadow-lg">
-            为中国<span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-600">光电新材料</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-600">精密智造的无尘空间</span>
             <br />
             产业赋能
           </h1>
           <p className="text-xl md:text-2xl text-slate-200 mb-10 leading-relaxed max-w-2xl drop-shadow-md">
-            致力于精密光电材料研发制造，以科技创新驱动产业升级，提供全球领先的智能触控显示一体化解决方案。
+          精密智造的制造车间，恒温恒湿且高度无尘，每一台设备都在精准运行，提供稳定可靠的精密制造环境。
           </p>
         </div>
       </div>

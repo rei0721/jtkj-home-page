@@ -44,10 +44,10 @@ export default function Products() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollAnimation>
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-8">核心业务领域</h2>
+            <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-8">产品展示</h2>
             <div className="w-20 h-1 bg-accent mx-auto rounded-full mb-8"></div>
             <p className="text-slate-600 max-w-2xl mx-auto text-lg md:text-xl leading-relaxed">
-              依托强大的研发制造能力，我们为多个前沿科技领域提供核心零部件与解决方案
+              依托强大的研发制造能力，我们有多个前沿的产品。
             </p>
           </div>
         </ScrollAnimation>
