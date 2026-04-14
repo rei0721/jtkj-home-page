@@ -10,7 +10,7 @@ const cultureCards = [
   },
   {
     icon: Heart,
-    title: '原则',
+    title: '价值观',
     desc: '市场是企业的方向，质量是企业的生命',
     color: 'from-rose-500 to-pink-500',
     bgColor: 'bg-rose-50',
