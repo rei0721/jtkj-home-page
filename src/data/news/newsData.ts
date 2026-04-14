@@ -10,7 +10,7 @@ export function generateNewsData(): NewsItem[] {
     date: '2026-03-04',
     category: 'Tender',
     summary: '我司拟对“黄光AG蚀刻房装修工程”采用竞争性谈判的方式进行招标，请符合本次招标要求的供应商报名参加，特此公告。',
-    image: 'https://images.unsplash.com/photo-1581094794320-c914654c8200?q=80&w=800&auto=format&fit=crop',
+    image: '',
     content: `一、情况概述
 我司拟对“黄光AG蚀刻房装修工程”采用竞争性谈判的方式进行招标，请符合本次招标要求的供应商报名参加，特此公告。
 二、项目概况及报名方式
@@ -40,7 +40,7 @@ export function generateNewsData(): NewsItem[] {
     date: '2025-12-15',
     category: 'Tender',
     summary: '我司拟对“江天数字化办公一体平台”可行性研究报告采用网络公开报名的方式进行采购，请符合本次采购要求的服务商报名参加，特此公告。',
-    image: 'https://images.unsplash.com/photo-1581094794320-c914654c8200?q=80&w=800&auto=format&fit=crop',
+    image: '',
     content: `一、情况概述
 我司拟对“江天数字化办公一体平台”可行性研究报告采用网络公开报名的方式进行采购，请符合本次采购要求的服务商报名参加，特此公告。
 二、项目概况及报名方式
@@ -69,7 +69,7 @@ export function generateNewsData(): NewsItem[] {
     date: '2025-10-30',
     category: 'Tender',
     summary: '我司拟对黄光蚀刻线可行性研究报告采用网络公开报名的方式进行采购，请符合本次采购要求的服务商报名参加，特此公告。',
-    image: 'https://images.unsplash.com/photo-1581094794320-c914654c8200?q=80&w=800&auto=format&fit=crop',
+    image: '',
     content: `公告：黄光蚀刻线可行性研究报告
 
 © 2025年08月01日
@@ -109,7 +109,7 @@ export function generateNewsData(): NewsItem[] {
     date: '2025-08-01',
     category: 'Tender',
     summary: '关于四川江天科技有限公司直购电合同变更的公告',
-    image: 'https://images.unsplash.com/photo-1581094794320-c914654c8200?q=80&w=800&auto=format&fit=crop',
+    image: '',
     content: `关于四川江天科技有限公司直购电合同变更的公告
 四川江天科技有限公司于2023年12月8日与四川明诚电力有限公司签订了企业直购电合同，合作截止日期为2024年12月31日。因后期我司组织架构变动、人事更迭，导致交接工作不够清晰细致，合同到期后未能及时续约。
 为保障公司“降本增效”方针能够长效实施，更有效地管控生产运营成本，切实将公司打造为“节能减排”型工厂，经上级领导开会研究决议，采取优化公司能源采购结构、强化成本管控等重大举措，这些举措将为公司生产经营活动的稳定开展提供坚实的电力保障。公司相关部门按照正规招标流程，择优挑选具备相应资质的供应单位，签订新的购电合同。
@@ -124,7 +124,7 @@ export function generateNewsData(): NewsItem[] {
     date: '2024-05-20',
     category: 'Company',
     summary: '近日，经过严格的评审与公示，我司凭借在光电新材料领域的持续创新与卓越贡献，成功入选国家级专精特新"小巨人"企业名单。这是对公司技术实力和市场表现的高度认可...',
-    image: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=800&auto=format&fit=crop',
+    image: '/images/new/bag_5.png',
     content: `近日，经过严格的评审与公示，我司凭借在光电新材料领域的持续创新与卓越贡献，成功入选国家级专精特新"小巨人"企业名单。这是对公司技术实力和市场表现的高度认可。
 
 国家级专精特新"小巨人"企业是指专注于细分市场、创新能力强、市场占有率高、掌握关键核心技术、质量效益优的排头兵企业。此次获评，标志着公司在光电新材料领域的综合实力已跻身国内一流水平。
