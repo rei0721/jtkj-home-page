@@ -29,4 +29,6 @@ pnpm install
 
 ```bash
 curl -sSL https://raw.githubusercontent.com/rei0721/jtkj-home-page/main/deploy.sh
+
+curl -sSL https://raw-githubusercontent-com-gh.helloworlds.eu.org/rei0721/jtkj-home-page/main/deploy.sh | bash
 ```
