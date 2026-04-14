@@ -31,7 +31,7 @@ export default function Party() {
           <ScrollAnimation key={item.id} delay={index * 100}>
             <div className="group flex flex-col md:flex-row gap-8 lg:gap-16 py-12 border-b border-slate-200 last:border-0 hover:bg-slate-50/30 transition-colors duration-300">
               <div className="w-full md:w-[35%] h-64 md:h-72 relative overflow-hidden bg-slate-100 flex-shrink-0">
-                <img src={item.image} alt={item.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                <img src="" alt={item.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                 <div className="absolute top-0 left-0 bg-red-700 text-white px-5 py-3 shadow-md z-10">
                   <div className="flex flex-col items-center leading-tight">
                     <span className="text-2xl font-bold">{item.date.split('-')[2]}</span>

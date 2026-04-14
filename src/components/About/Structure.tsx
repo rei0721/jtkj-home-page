@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react';
 
-type NodeVariant = 'executive' | 'leader' | 'unit' | 'dashed';
+type NodeVariant = 'executive' | 'leader' | 'unit' | 'highlight';
 
 type DesktopNode = {
   id: string;
@@ -22,110 +22,113 @@ type Line = {
 
 type Branch = {
   title: string;
-  chain?: string[];
-  departments: string[];
-  dashedDepartments?: string[];
-  nestedTitle?: string;
-  nestedDepartments?: string[];
-  nestedDashedDepartments?: string[];
+  directDepartments?: string[];
+  businessUnit?: string;
+  businessDepartments?: string[];
 };
 
-const directDepartments = ['法务监察部', '财务部'];
+const directDepartments = ['内控内审部', '工会', '财务部'];
 
 const branches: Branch[] = [
   {
-    title: '行政副总经理',
-    departments: ['市场部', '综合管理部', '采购部'],
+    title: '行政副总',
+    directDepartments: ['综合管理部', '采购部', '市场部'],
   },
   {
-    title: '技术副总经理',
-    chain: ['技术管理中心', '技术研发部'],
-    departments: ['盖板技术组'],
-    dashedDepartments: ['黄光技术组', '模组技术组'],
+    title: '生产副总',
+    businessUnit: '盖板事业部',
+    businessDepartments: ['技术研发部', '生产部', '品质部'],
   },
   {
-    title: '生产副总经理',
-    departments: ['PMC', '品质部', '装备动力部'],
-    nestedTitle: '生产部',
-    nestedDepartments: ['盖板制造部'],
-    nestedDashedDepartments: ['黄光制造部', '模组制造部'],
+    title: '生产副总',
+    businessUnit: '黄光事业部',
+    businessDepartments: ['技术研发部', '生产部', '品质部'],
   },
 ];
 
 const desktopNodes: DesktopNode[] = [
-  { id: 'executive', label: '执行董事', x: 570, y: 12, width: 180, height: 56, variant: 'executive' },
-  { id: 'admin', label: '行政副总经理', x: 306, y: 130, width: 168, height: 56, variant: 'leader' },
-  { id: 'tech', label: '技术副总经理', x: 576, y: 130, width: 168, height: 56, variant: 'leader' },
-  { id: 'tech-mgmt', label: '技术管理中心', x: 576, y: 228, width: 168, height: 50, variant: 'leader' },
-  { id: 'tech-rd', label: '技术研发部', x: 576, y: 302, width: 168, height: 54, variant: 'leader' },
-  { id: 'production', label: '生产副总经理', x: 926, y: 130, width: 168, height: 56, variant: 'leader' },
+  { id: 'executive', label: '执行董事', x: 560, y: 34, width: 220, height: 56, variant: 'executive' },
 
-  { id: 'legal', label: '法务监察部', x: 84, y: 420, width: 64, height: 180, vertical: true },
-  { id: 'finance', label: '财务部', x: 204, y: 420, width: 64, height: 180, vertical: true },
+  { id: 'gm', label: '总经理', x: 760, y: 145, width: 150, height: 56, variant: 'leader' },
 
-  { id: 'market', label: '市场部', x: 288, y: 420, width: 64, height: 180, vertical: true },
-  { id: 'general', label: '综合管理部', x: 358, y: 420, width: 64, height: 180, vertical: true },
-  { id: 'procurement', label: '采购部', x: 428, y: 420, width: 64, height: 180, vertical: true },
+  { id: 'admin-vp', label: '行政副总', x: 540, y: 290, width: 150, height: 56, variant: 'leader' },
+  { id: 'prod-vp-1', label: '生产副总', x: 790, y: 290, width: 150, height: 56, variant: 'leader' },
+  { id: 'prod-vp-2', label: '生产副总', x: 1040, y: 290, width: 150, height: 56, variant: 'leader' },
 
-  { id: 'cover-tech', label: '盖板技术组', x: 508, y: 420, width: 64, height: 180, vertical: true },
-  { id: 'yellow-tech', label: '黄光技术组', x: 628, y: 420, width: 64, height: 180, vertical: true, variant: 'dashed' },
-  { id: 'module-tech', label: '模组技术组', x: 748, y: 420, width: 64, height: 180, vertical: true, variant: 'dashed' },
+  { id: 'cover-bu', label: '盖板事业部', x: 785, y: 398, width: 160, height: 52, variant: 'highlight' },
+  { id: 'yellow-bu', label: '黄光事业部', x: 1035, y: 398, width: 160, height: 52, variant: 'highlight' },
 
-  { id: 'pmc', label: 'PMC', x: 838, y: 420, width: 64, height: 180, vertical: true },
-  { id: 'quality', label: '品质部', x: 928, y: 420, width: 64, height: 180, vertical: true },
-  { id: 'equipment', label: '装备动力部', x: 1018, y: 420, width: 64, height: 180, vertical: true },
-  { id: 'production-dept', label: '生产部', x: 1070, y: 420, width: 160, height: 56, variant: 'leader' },
+  { id: 'audit', label: '内控内审部', x: 118, y: 520, width: 56, height: 208, vertical: true },
+  { id: 'union', label: '工会', x: 238, y: 520, width: 56, height: 208, vertical: true },
+  { id: 'finance', label: '财务部', x: 358, y: 520, width: 56, height: 208, vertical: true },
 
-  { id: 'cover-manufacturing', label: '盖板制造部', x: 1058, y: 548, width: 64, height: 180, vertical: true },
-  { id: 'yellow-manufacturing', label: '黄光制造部', x: 1118, y: 548, width: 64, height: 180, vertical: true, variant: 'dashed' },
-  { id: 'module-manufacturing', label: '模组制造部', x: 1178, y: 548, width: 64, height: 180, vertical: true, variant: 'dashed' },
+  { id: 'general', label: '综合管理部', x: 490, y: 560, width: 56, height: 168, vertical: true },
+  { id: 'purchase', label: '采购部', x: 585, y: 560, width: 56, height: 168, vertical: true },
+  { id: 'market', label: '市场部', x: 680, y: 560, width: 56, height: 168, vertical: true },
+
+  { id: 'cover-rd', label: '技术研发部', x: 790, y: 595, width: 56, height: 133, vertical: true },
+  { id: 'cover-prod', label: '生产部', x: 885, y: 595, width: 56, height: 133, vertical: true },
+  { id: 'cover-quality', label: '品质部', x: 980, y: 595, width: 56, height: 133, vertical: true },
+
+  { id: 'yellow-rd', label: '技术研发部', x: 1065, y: 595, width: 56, height: 133, vertical: true },
+  { id: 'yellow-prod', label: '生产部', x: 1160, y: 595, width: 56, height: 133, vertical: true },
+  { id: 'yellow-quality', label: '品质部', x: 1255, y: 595, width: 56, height: 133, vertical: true },
 ];
 
 const desktopLines: Line[] = [
-  { x: 660, y: 68, height: 32 },
-  { x: 160, y: 100, width: 850 },
+  // 执行董事 -> 顶部主干线
+  { x: 670, y: 90, height: 26 },
 
-  { x: 160, y: 100, height: 220 },
-  { x: 116, y: 320, width: 120 },
-  { x: 116, y: 320, height: 100 },
-  { x: 236, y: 320, height: 100 },
+  // 顶部主干线
+  { x: 140, y: 116, width: 670 },
 
-  { x: 390, y: 100, height: 30 },
-  { x: 390, y: 186, height: 182 },
-  { x: 320, y: 368, width: 140 },
-  { x: 320, y: 368, height: 52 },
-  { x: 390, y: 368, height: 52 },
-  { x: 460, y: 368, height: 52 },
+  // 左侧直属部门三根下引线
+  { x: 140, y: 116, height: 404 },
+  { x: 260, y: 116, height: 404 },
+  { x: 380, y: 116, height: 404 },
 
-  { x: 660, y: 100, height: 30 },
-  { x: 660, y: 186, height: 42 },
-  { x: 660, y: 278, height: 24 },
-  { x: 660, y: 356, height: 32 },
-  { x: 540, y: 388, width: 240 },
-  { x: 540, y: 388, height: 32 },
-  { x: 660, y: 388, height: 32 },
-  { x: 780, y: 388, height: 32 },
+  // 顶部主干线 -> 总经理
+  { x: 810, y: 116, width: 25 },
+  { x: 835, y: 116, height: 29 },
 
-  { x: 1010, y: 100, height: 30 },
-  { x: 1010, y: 186, height: 182 },
-  { x: 870, y: 368, width: 280 },
-  { x: 870, y: 368, height: 52 },
-  { x: 960, y: 368, height: 52 },
-  { x: 1050, y: 368, height: 52 },
-  { x: 1150, y: 368, height: 52 },
+  // 总经理 -> 下方主横线
+  { x: 835, y: 201, height: 58 },
+  { x: 615, y: 259, width: 500 },
 
-  { x: 1150, y: 476, height: 40 },
-  { x: 1090, y: 516, width: 120 },
-  { x: 1090, y: 516, height: 32 },
-  { x: 1150, y: 516, height: 32 },
-  { x: 1210, y: 516, height: 32 },
+  // 主横线 -> 三位副总
+  { x: 615, y: 259, height: 31 },
+  { x: 865, y: 259, height: 31 },
+  { x: 1115, y: 259, height: 31 },
+
+  // 行政副总 -> 三部门
+  { x: 615, y: 346, height: 48 },
+  { x: 520, y: 394, width: 190 },
+  { x: 520, y: 394, height: 166 },
+  { x: 615, y: 394, height: 166 },
+  { x: 710, y: 394, height: 166 },
+
+  // 生产副总1 -> 盖板事业部
+  { x: 865, y: 346, height: 52 },
+  { x: 865, y: 450, height: 38 },
+  { x: 818, y: 488, width: 190 },
+  { x: 818, y: 488, height: 107 },
+  { x: 913, y: 488, height: 107 },
+  { x: 1008, y: 488, height: 107 },
+
+  // 生产副总2 -> 黄光事业部
+  { x: 1115, y: 346, height: 52 },
+  { x: 1115, y: 450, height: 38 },
+  { x: 1093, y: 488, width: 190 },
+  { x: 1093, y: 488, height: 107 },
+  { x: 1188, y: 488, height: 107 },
+  { x: 1283, y: 488, height: 107 },
 ];
 
 const nodeClassMap: Record<NodeVariant, string> = {
-  executive: 'border-slate-900 bg-slate-900 text-white shadow-lg shadow-slate-900/10',
-  leader: 'border-slate-300 bg-white text-slate-900 shadow-sm',
-  unit: 'border-slate-300 bg-white text-slate-800 shadow-sm',
-  dashed: 'border-slate-400 bg-slate-50/90 text-slate-700 shadow-none border-dashed',
+  executive: 'border-neutral-700 bg-white text-neutral-900 shadow-none',
+  leader: 'border-neutral-700 bg-white text-neutral-900 shadow-none',
+  unit: 'border-neutral-700 bg-white text-neutral-900 shadow-none',
+  highlight: 'border-indigo-500 bg-indigo-500 text-white shadow-[0_10px_22px_rgba(99,102,241,0.18)]',
 };
 
 function Connector({ x, y, width, height }: Line) {
@@ -136,12 +139,12 @@ function Connector({ x, y, width, height }: Line) {
     height: height ? `${height}px` : '2px',
   };
 
-  return <span className="absolute rounded-full bg-slate-300" style={style} aria-hidden="true" />;
+  return <span className="absolute bg-neutral-700" style={style} aria-hidden="true" />;
 }
 
 function VerticalLabel({ label }: { label: string }) {
   return (
-    <span className="flex h-full flex-col items-center justify-center gap-1.5 text-[17px] font-semibold leading-none tracking-[0.08em]">
+    <span className="flex h-full flex-col items-center justify-center text-[15px] font-semibold leading-[1.04] tracking-[0.01em]">
       {label.split('').map((char, index) => (
         <span key={`${label}-${index}`}>{char}</span>
       ))}
@@ -159,9 +162,8 @@ function OrgNode({ label, x, y, width, height, vertical = false, variant = 'unit
 
   return (
     <div
-      className={`absolute flex items-center justify-center rounded-2xl border text-center ${nodeClassMap[variant]} ${
-        vertical ? 'px-2 py-4' : 'px-4 py-3 text-lg font-semibold'
-      }`}
+      className={`absolute flex items-center justify-center border text-center ${nodeClassMap[variant]} ${vertical ? 'px-1 py-2' : 'px-4 py-3 text-lg font-semibold'
+        }`}
       style={style}
     >
       {vertical ? <VerticalLabel label={label} /> : <span>{label}</span>}
@@ -169,12 +171,11 @@ function OrgNode({ label, x, y, width, height, vertical = false, variant = 'unit
   );
 }
 
-function MobileTag({ label, dashed = false }: { label: string; dashed?: boolean }) {
+function MobileTag({ label, highlight = false }: { label: string; highlight?: boolean }) {
   return (
     <span
-      className={`inline-flex items-center rounded-full border px-4 py-2 text-sm font-medium ${
-        dashed ? 'border-dashed border-slate-400 bg-slate-50 text-slate-600' : 'border-slate-200 bg-white text-slate-700'
-      }`}
+      className={`inline-flex items-center rounded-md border px-4 py-2 text-sm font-medium ${highlight ? 'border-indigo-500 bg-indigo-500 text-white' : 'border-neutral-300 bg-white text-neutral-800'
+        }`}
     >
       {label}
     </span>
@@ -184,22 +185,23 @@ function MobileTag({ label, dashed = false }: { label: string; dashed?: boolean 
 export default function Structure() {
   return (
     <div className="animate-fade-in-up">
-      <div className="mb-16 text-center">
-        <h2 className="mb-6 text-3xl font-bold text-slate-900 md:text-5xl">组织架构</h2>
-        <div className="mx-auto mb-6 h-1 w-20 rounded-full bg-accent"></div>
-        <p className="mx-auto max-w-2xl text-lg text-slate-500">依据提供的组织关系图，对公司各管理线和部门层级进行结构化映射。</p>
+      <div className="mb-14 text-center">
+        <h2 className="mb-5 text-3xl font-bold text-slate-900 md:text-5xl">组织架构</h2>
+        <div className="mx-auto mb-5 h-1 w-20 rounded-full bg-accent"></div>
+        <p className="mx-auto max-w-2xl text-lg text-slate-500">依据组织关系图对管理层级与部门归属进行可视化展示。</p>
       </div>
 
-      <div className="space-y-8 lg:hidden">
-        <div className="rounded-3xl border border-slate-200 bg-slate-900 px-6 py-5 text-center text-white shadow-lg shadow-slate-900/10">
-          <p className="text-xl font-bold">执行董事</p>
+      <div className="space-y-6 lg:hidden">
+        <div className="border border-neutral-700 bg-white px-6 py-4 text-center">
+          <p className="text-xl font-bold text-neutral-900">执行董事</p>
         </div>
 
-        <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-          <div className="mb-4 flex items-center justify-between gap-4">
-            <h3 className="text-lg font-bold text-slate-900">直属部门</h3>
-            <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-500">按原图映射</span>
-          </div>
+        <div className="border border-neutral-700 bg-white px-6 py-4 text-center">
+          <p className="text-xl font-bold text-neutral-900">总经理</p>
+        </div>
+
+        <div className="border border-neutral-200 bg-white p-5">
+          <h3 className="mb-4 text-lg font-bold text-neutral-900">直属部门</h3>
           <div className="flex flex-wrap gap-3">
             {directDepartments.map((department) => (
               <MobileTag key={department} label={department} />
@@ -207,43 +209,26 @@ export default function Structure() {
           </div>
         </div>
 
-        {branches.map((branch) => (
-          <div key={branch.title} className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-            <h3 className="text-xl font-bold text-slate-900">{branch.title}</h3>
+        {branches.map((branch, index) => (
+          <div key={`${branch.title}-${index}`} className="border border-neutral-200 bg-white p-5">
+            <h3 className="text-lg font-bold text-neutral-900">{branch.title}</h3>
 
-            {branch.chain && (
-              <div className="mt-5 flex flex-col gap-3">
-                {branch.chain.map((item) => (
-                  <div
-                    key={item}
-                    className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-center text-sm font-semibold text-slate-700"
-                  >
-                    {item}
-                  </div>
+            {branch.directDepartments && (
+              <div className="mt-4 flex flex-wrap gap-3">
+                {branch.directDepartments.map((department) => (
+                  <MobileTag key={department} label={department} />
                 ))}
               </div>
             )}
 
-            <div className="mt-5 flex flex-wrap gap-3">
-              {branch.departments.map((department) => (
-                <MobileTag key={department} label={department} />
-              ))}
-              {branch.dashedDepartments?.map((department) => (
-                <MobileTag key={department} label={department} dashed />
-              ))}
-            </div>
-
-            {branch.nestedTitle && (
-              <div className="mt-6 rounded-2xl border border-slate-200 bg-slate-50 p-4">
-                <div className="mb-4 rounded-2xl border border-slate-300 bg-white px-4 py-3 text-center text-sm font-semibold text-slate-800">
-                  {branch.nestedTitle}
+            {branch.businessUnit && (
+              <div className="mt-4 space-y-4">
+                <div>
+                  <MobileTag label={branch.businessUnit} highlight />
                 </div>
                 <div className="flex flex-wrap gap-3">
-                  {branch.nestedDepartments?.map((department) => (
+                  {branch.businessDepartments?.map((department) => (
                     <MobileTag key={department} label={department} />
-                  ))}
-                  {branch.nestedDashedDepartments?.map((department) => (
-                    <MobileTag key={department} label={department} dashed />
                   ))}
                 </div>
               </div>
@@ -254,8 +239,8 @@ export default function Structure() {
 
       <div className="hidden lg:block">
         <div className="overflow-x-auto pb-4">
-          <div className="mx-auto w-[1320px] rounded-[32px] border border-slate-200 bg-gradient-to-b from-slate-50 via-white to-white p-8 shadow-[0_24px_60px_-36px_rgba(15,23,42,0.35)]">
-            <div className="relative h-[740px]">
+          <div className="mx-auto w-[1400px] bg-[#f5f5f5] p-8">
+            <div className="relative h-[780px]">
               {desktopLines.map((line, index) => (
                 <Connector key={`${line.x}-${line.y}-${index}`} {...line} />
               ))}
@@ -265,7 +250,6 @@ export default function Structure() {
             </div>
           </div>
         </div>
-        <p className="mt-4 text-center text-sm text-slate-400">虚线边框节点已按原图样式保留展示。</p>
       </div>
     </div>
   );
