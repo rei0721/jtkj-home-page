@@ -6,7 +6,7 @@ set -Eeuo pipefail
 #######################################
 CONTAINER_NAME="my_frontend_app"
 IMAGE_NAME="node:20-bookworm"
-HOST_PORT="33000"
+HOST_PORT="2345"
 CONTAINER_PORT="3000"
 
 # Git 仓库地址
