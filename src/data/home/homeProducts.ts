@@ -6,7 +6,7 @@ export const homeProducts: Product[] = [
     title: '车载盖板',
     category: 'Smart Touch',
     description:
-      '晶盾2.5D流光一体成型技术：通过表面镀有金刚砂的CNC磨头对玻璃进行磨削加工，包括外形、打孔、倒角、2.5D弧面磨削。',
+      '晶盾流光一体成型技术：通过表面镀有金刚砂的CNC磨头对玻璃进行磨削加工，包括外形、打孔、倒角、弧面磨削。',
     image: '/images/home/bg_4.png',
   },
   {

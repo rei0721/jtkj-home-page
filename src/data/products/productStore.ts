@@ -2,21 +2,21 @@ import { CategoryData } from '@/types';
 
 export const DATA_STORE: Record<string, CategoryData> = {
   'smart-touch': {
-    title: '触摸屏领域',
+    title: '盖板领域',
     subtitle: 'Smart Touch Solutions',
     heroSlides: [
       'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2070&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop',
     ],
-    description: '玻璃投射式电容触摸屏具有多点触控的功能，具有透光率高、反应速度快、寿命长等优点。',
+    description: '晶盾流光一体成型技术：通过表面镀有金刚砂的CNC磨头对玻璃进行磨削加工，包括外形、打孔、倒角、弧面磨削',
     scenarios: [
       {
         id: 'home',
-        label: '玻璃电容式触摸屏',
+        label: '盖板',
         title: '',
-        description: '玻璃电容式触摸屏用于消费、平板、车载显示、自助终端设备、工业控制等领域。',
-        image: '/images/home/bg_6.png',
+        description: '应用于手机/平板盖板玻璃、车载中控、工控医疗、滤光片与窗口片等。',
+        image: '/images/products/1.jpg',
       },
       // {
       //   id: 'industrial',
@@ -33,18 +33,19 @@ export const DATA_STORE: Record<string, CategoryData> = {
       //   image: 'https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?q=80&w=1000&auto=format&fit=crop',
       // },
     ],
-    products: Array.from({ length: 1 }).map((_, i) => ({
+    products: Array.from({ length: 7 }).map((_, i) => ({
       id: i + 1,
-      name: `G${i + 1} Series 智能触控模组`,
-      image: `https://picsum.photos/seed/touch${i}/600/600`,
+      name: `${i + 1} 盖板模组`,
+      image: `/images/products/${i}.jpg`,
       specs: [
-        { label: '尺寸范围', value: '7.0" - 32.0"' },
-        { label: '触控点数', value: '10点 / 20点' },
-        { label: '透光率', value: '≥ 90%' },
-        { label: '表面硬度', value: '≥ 6H' },
-        { label: '工作温度', value: '-20℃ ~ 70℃' },
+        // { label: '尺寸范围', value: '7.0" - 32.0"' },
+        // { label: '触控点数', value: '10点 / 20点' },
+        // { label: '透光率', value: '≥ 90%' },
+        // { label: '表面硬度', value: '≥ 6H' },
+        // { label: '工作温度', value: '-20℃ ~ 70℃' },
       ],
-      features: ['AG/AR/AF 表面处理', '支持主动笔', '防水抗噪'],
+      // 'AG/AR/AF 表面处理', '支持主动笔', '防水抗噪'
+      features: [],
     })),
   },
   'computing': {

@@ -6,7 +6,7 @@ const mockCompanyMetrics: CompanyMetric[] = [
   {
     id: 1,
     name: '项目总投资',
-    value: 80,
+    value: 3.2,
     unit: '亿+',
     prefixSymbol: '¥',
     suffixText: '亿+',
@@ -19,7 +19,7 @@ const mockCompanyMetrics: CompanyMetric[] = [
   {
     id: 2,
     name: '公司占地面积',
-    value: 800,
+    value: 103,
     unit: '亩',
     suffixText: '亩',
     description: '生产基地占地面积',
@@ -31,7 +31,7 @@ const mockCompanyMetrics: CompanyMetric[] = [
   {
     id: 3,
     name: '年销售额',
-    value: 100,
+    value: 1,
     unit: '亿+',
     prefixSymbol: '¥',
     suffixText: '亿+',
@@ -44,7 +44,7 @@ const mockCompanyMetrics: CompanyMetric[] = [
   {
     id: 4,
     name: '研发专利',
-    value: 300,
+    value: 30,
     unit: '项+',
     suffixText: '项+',
     description: '累计获得专利数量',
@@ -56,7 +56,7 @@ const mockCompanyMetrics: CompanyMetric[] = [
   {
     id: 5,
     name: '员工总数',
-    value: 2000,
+    value: 130,
     unit: '人+',
     suffixText: '人+',
     description: '公司员工规模',
@@ -68,7 +68,7 @@ const mockCompanyMetrics: CompanyMetric[] = [
   {
     id: 6,
     name: '年产能',
-    value: 5000,
+    value: 300,
     unit: '万片',
     suffixText: '万片+',
     description: '年度生产能力',

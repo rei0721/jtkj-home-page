@@ -28,7 +28,7 @@ export const navItems: MenuItem[] = [
     path: '/products',
     submenu: [
       {
-        title: '智能触控领域',
+        title: '盖板',
         path: '/products/smart-touch',
         image:
           'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=400&auto=format&fit=crop',
@@ -36,8 +36,7 @@ export const navItems: MenuItem[] = [
       {
         title: '黄光AG制程防眩盖板',
         path: '/products/computing',
-        image:
-          '/images/home/bg_5.png',
+        image: '/images/home/bg_5.png',
       },
       {
         title: '车载领域',
