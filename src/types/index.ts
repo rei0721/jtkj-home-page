@@ -1,6 +1,7 @@
 export * from './api';
 export * from './navigation';
 export * from './product';
+export * from './heroSlide';
 export * from './news';
 export * from './job';
 export * from './stat';

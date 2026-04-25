@@ -1,6 +1,9 @@
-export const heroSlides = [
+import { HeroSlide } from '@/types';
+
+export const heroSlides: HeroSlide[] = [
   {
     id: 1,
+    video: 'https://store.ilin.eu.org/ac615ed265ac255672a181739c76ec00.mp4', // Placeholder video
     image: '/images/home/bg_1.jpg',
     alt: 'Advanced Optoelectronic Technology',
     title: '先进光电技术',

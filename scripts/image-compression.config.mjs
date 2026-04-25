@@ -8,7 +8,9 @@ export const imageCompressionConfig = {
     'images/jiangtian-logo-blue.jpg',
     'images/jiangtian-logo-blue.png',
     'images/jiangtian-logo-no-text.png',
-    'images/jiangtian-logo.png'
+    'images/jiangtian-logo.png',
+    'images/logo/logo-white.png',
+    'images/logo/logo-black.png',
   ],
   jpeg: {
     quality: 80,

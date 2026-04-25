@@ -2,6 +2,9 @@ import { Mail, MapPin, Phone, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useContactInfo } from '@/hooks/useContactInfo';
 import { COMPANY } from '@/constants/company';
+import { DBSTORE } from '@/constants/config';
+
+
 
 export default function Footer() {
   const { contact } = useContactInfo();
@@ -9,6 +12,9 @@ export default function Footer() {
   const phone = contact?.phone || COMPANY.phone;
   const email = contact?.email || COMPANY.email;
   const address = contact?.address || COMPANY.addresses[0];
+
+  // appUrl
+  const appUrl = DBSTORE.appUrl;
   return (
     <footer className="pt-24 pb-12 font-light" style={{ backgroundColor: 'rgb(23, 23, 23)' }}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -25,9 +31,14 @@ export default function Footer() {
                 <div className="mt-1 w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white group-hover:bg-accent group-hover:text-white transition-all duration-300 flex-shrink-0">
                   <MapPin size={18} />
                 </div>
-                <span className="flex-1 leading-relaxed text-white/60 group-hover:text-white transition-colors text-base">
+                {/* <span className="flex-1 leading-relaxed text-white/60 group-hover:text-white transition-colors text-base">
+                  {address}
+                </span> */}
+                <a href={`${appUrl}`} target="_blank" rel="noopener noreferrer" className="text-white/60 group-hover:text-white transition-colors text-base">
+                  <span className="flex-1 leading-relaxed text-white/60 group-hover:text-white transition-colors text-base">
                   {address}
                 </span>
+                </a>
               </li>
               <li className="flex items-center gap-4 group">
                 <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white group-hover:bg-accent group-hover:text-white transition-all duration-300 flex-shrink-0">

@@ -16,7 +16,7 @@ export default function RndSection() {
             <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-8">核心技术研发</h2>
             <div className="w-20 h-1 bg-gradient-to-r from-transparent via-accent to-transparent mx-auto rounded-full mb-8"></div>
             <p className="text-lg md:text-xl text-slate-600 leading-relaxed mb-12">
-            拥有一批高级工程师和技术专家，在超薄车载盖板光学材料制备、高精度玻璃加工工艺、先进镀膜技术等方面开展持续研发。为公司的产品升级和技术突破提供了核心驱动力
+            主要生产黄光AG、定向发声、触控SENSOR等系列产品及车载、消费类显示器玻璃盖板，致力打造川渝地区声光融合智能制造重要基地。企业先后荣膺国家高新技术企业、省企业技术中心、专精特新企业等多项荣誉，持有发明专利6项、实用新型专利23项。
 
             </p>
           </div>
